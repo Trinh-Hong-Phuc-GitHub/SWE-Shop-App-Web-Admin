@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:uber_shop_app_web_admin/views/screens/side_bar_screens/widgets/withdrawal_list.dart';
 
 class WithdrawalScreen extends StatelessWidget {
   static const String routeName = '\WithdrawalScreen';
@@ -50,9 +51,10 @@ class WithdrawalScreen extends StatelessWidget {
               _rowHeader('BANK NAME', 2),
               _rowHeader('BANK ACCOUNT', 2),
               _rowHeader('EMAIL', 1),
-              _rowHeader('PHONE', 1),
+              // _rowHeader('PHONE', 1),
             ],
           ),
+          WithdrawalList(),
         ],
       ),
     );

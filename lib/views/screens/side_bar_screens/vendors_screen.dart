@@ -1,7 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:uber_shop_app_web_admin/views/screens/side_bar_screens/widgets/vendor_list_widget.dart';
 
-class VendorsScreen extends StatelessWidget {
+class VendorsScreen extends StatefulWidget {
   static const String routeName = '\VendorsScreen';
+
+  @override
+  _VendorsScreenState createState() => _VendorsScreenState();
+}
+
+class _VendorsScreenState extends State<VendorsScreen> {
+  String searchQuery = '';
 
   Widget _rowHeader(String text, int flex) {
     return Expanded(
@@ -35,12 +43,50 @@ class VendorsScreen extends StatelessWidget {
           Container(
             alignment: Alignment.topLeft,
             padding: const EdgeInsets.all(10),
-            child: const Text(
-              'Manage Vendors',
-              style: TextStyle(
-                fontWeight: FontWeight.w700,
-                fontSize: 36,
-              ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text(
+                  'Manage Vendors',
+                  style: TextStyle(
+                    fontWeight: FontWeight.w700,
+                    fontSize: 36,
+                  ),
+                ),
+                Container(
+                  width: 300,
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: TextField(
+                          onChanged: (value) {
+                            setState(() {
+                              searchQuery = value;
+                            });
+                          },
+                          decoration: InputDecoration(
+                            hintText: 'Search Vendors',
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(8),
+                              borderSide: BorderSide.none,
+                            ),
+                            filled: true,
+                            fillColor: Colors.grey.shade200,
+                            contentPadding: EdgeInsets.symmetric(horizontal: 16),
+                          ),
+                        ),
+                      ),
+                      IconButton(
+                        icon: Icon(Icons.search),
+                        onPressed: () {
+                          // Trigger search if needed
+                          setState(() {});
+                        },
+                      ),
+                    ],
+                  ),
+                ),
+              ],
             ),
           ),
           Row(
@@ -53,6 +99,7 @@ class VendorsScreen extends StatelessWidget {
               _rowHeader('VIEWMORE', 1),
             ],
           ),
+          VendorsListWidget(searchQuery: searchQuery),
         ],
       ),
     );

@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_admin_scaffold/admin_scaffold.dart';
+import 'package:uber_shop_app_web_admin/views/screens/side_bar_screens/buyer_screeen.dart';
 import 'package:uber_shop_app_web_admin/views/screens/side_bar_screens/category_screen.dart';
 import 'package:uber_shop_app_web_admin/views/screens/side_bar_screens/dashboard_screen.dart';
 import 'package:uber_shop_app_web_admin/views/screens/side_bar_screens/orders_screen.dart';
@@ -31,14 +32,18 @@ class _MainScreenState extends State<MainScreen> {
           _selectedItem = VendorsScreen();
         });
         break;
-      case OrdersScreen.routeName:
+      case BuyersScreen.id:
         setState(() {
-          _selectedItem = OrdersScreen();
+          _selectedItem = BuyersScreen();
         });
-        break;
       case ProductsScreen.routeName:
         setState(() {
           _selectedItem = ProductsScreen();
+        });
+        break;
+      case OrdersScreen.routeName:
+        setState(() {
+          _selectedItem = OrdersScreen();
         });
         break;
       case CategoryScreen.routeName:
@@ -71,19 +76,9 @@ class _MainScreenState extends State<MainScreen> {
             route: DashboardScreen.routeName,
           ),
           AdminMenuItem(
-            title: 'Vendors',
-            icon: CupertinoIcons.person_3,
-            route: VendorsScreen.routeName,
-          ),
-          AdminMenuItem(
-            title: 'Withdrawal',
-            icon: CupertinoIcons.money_dollar,
-            route: WithdrawalScreen.routeName,
-          ),
-          AdminMenuItem(
-            title: 'Orders',
-            icon: CupertinoIcons.shopping_cart,
-            route: OrdersScreen.routeName,
+            title: 'Upload Banner',
+            icon: CupertinoIcons.add,
+            route: UploadBannerScreen.routeName,
           ),
           AdminMenuItem(
             title: 'Categories',
@@ -91,14 +86,29 @@ class _MainScreenState extends State<MainScreen> {
             route: CategoryScreen.routeName,
           ),
           AdminMenuItem(
+            title: 'Vendors',
+            icon: CupertinoIcons.person_3,
+            route: VendorsScreen.routeName,
+          ),
+          AdminMenuItem(
+            title: 'Buyers',
+            route: BuyersScreen.id,
+            icon: CupertinoIcons.person,
+          ),
+          AdminMenuItem(
+            title: 'Withdrawal',
+            icon: CupertinoIcons.money_dollar,
+            route: WithdrawalScreen.routeName,
+          ),
+          AdminMenuItem(
             title: 'Products',
             icon: Icons.shop,
             route: ProductsScreen.routeName,
           ),
           AdminMenuItem(
-            title: 'Upload Banner',
-            icon: CupertinoIcons.add,
-            route: UploadBannerScreen.routeName,
+            title: 'Orders',
+            icon: CupertinoIcons.shopping_cart,
+            route: OrdersScreen.routeName,
           ),
         ],
         selectedRoute: '',

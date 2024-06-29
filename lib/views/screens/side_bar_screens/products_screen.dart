@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:uber_shop_app_web_admin/views/screens/side_bar_screens/widgets/product_list_widget.dart';
 
 class ProductsScreen extends StatelessWidget {
   static const String routeName = '\ProductsScreen';
@@ -53,6 +54,7 @@ class ProductsScreen extends StatelessWidget {
               _rowHeader('VIEW MORE', 1),
             ],
           ),
+          ProductListWidget(),
         ],
       ),
     );

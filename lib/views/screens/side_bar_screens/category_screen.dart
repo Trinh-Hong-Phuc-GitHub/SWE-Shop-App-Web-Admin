@@ -49,18 +49,47 @@ class _CategoryScreenState extends State<CategoryScreen> {
   uploadCategory() async {
     EasyLoading.show();
     if (_formKey.currentState!.validate()) {
-      String imageUrl = await _uploadCategoryBannerToStorage(_image);
-      await _firestore.collection('categories').doc(fileName).set(
-        {
-          'image': imageUrl,
-          'categoryName': categoryName,
-        },
-      ).whenComplete(() {
+      // Check if the category name already exists
+      var existingCategory = await _firestore
+          .collection('categories')
+          .where('categoryName', isEqualTo: categoryName)
+          .get();
+
+      if (existingCategory.docs.isNotEmpty) {
+        // Category name already exists
         EasyLoading.dismiss();
-        setState(() {
-          _image = null;
+        showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              title: Text('Error'),
+              content: Text('Category name already exists. Please choose a different name.'),
+              actions: [
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: Text('OK'),
+                ),
+              ],
+            );
+          },
+        );
+      } else {
+        // Category name does not exist, proceed with creation
+        String imageUrl = await _uploadCategoryBannerToStorage(_image);
+        await _firestore.collection('categories').doc(fileName).set(
+          {
+            'image': imageUrl,
+            'categoryName': categoryName,
+          },
+        ).whenComplete(() {
+          EasyLoading.dismiss();
+          setState(() {
+            _image = null;
+          });
         });
-      });
+      }
     }
   }
 
@@ -103,12 +132,12 @@ class _CategoryScreenState extends State<CategoryScreen> {
                         ),
                         child: _image != null
                             ? Image.memory(
-                                _image,
-                                fit: BoxFit.cover,
-                              )
+                          _image,
+                          fit: BoxFit.cover,
+                        )
                             : Center(
-                                child: Text('Category'),
-                              ),
+                          child: Text('Category'),
+                        ),
                       ),
                       SizedBox(
                         height: 20,

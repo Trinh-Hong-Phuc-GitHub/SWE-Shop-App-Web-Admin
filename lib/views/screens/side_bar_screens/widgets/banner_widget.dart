@@ -33,16 +33,47 @@ class BannerWidget extends StatelessWidget {
           ),
           itemBuilder: (context, index) {
             final bannerData = snapshot.data!.docs[index];
-            return Column(
-              children: [
-                SizedBox(
-                  height: 100,
-                  width: 100,
-                  child: Image.network(
-                    bannerData['image'],
+            return GestureDetector(
+              onTap: () {
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return AlertDialog(
+                      title: Text('Confirm deletion'),
+                      content: Text('Do you want to delete this banner?'),
+                      actions: <Widget>[
+                        TextButton(
+                          onPressed: () {
+                            Navigator.of(context).pop(); // Đóng hộp thoại
+                          },
+                          child: Text('Cancel'),
+                        ),
+                        TextButton(
+                          onPressed: () {
+                            FirebaseFirestore.instance
+                                .collection('banners')
+                                .doc(bannerData.id)
+                                .delete();
+                            Navigator.of(context).pop(); // Đóng hộp thoại
+                          },
+                          child: Text('Delete'),
+                        ),
+                      ],
+                    );
+                  },
+                );
+              },
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: 100,
+                    width: 100,
+                    child: Image.network(
+                      bannerData['image'],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             );
           },
         );
