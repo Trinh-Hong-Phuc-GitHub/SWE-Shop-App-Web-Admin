@@ -1,16 +1,16 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import '../../../models/vendor_user_models.dart';
 
-class VendorDetailScreen extends StatelessWidget {
-  final VendorUserModel vendor;
+class BuyerDetailScreen extends StatelessWidget {
+  final DocumentSnapshot buyerData;
 
-  VendorDetailScreen({required this.vendor});
+  BuyerDetailScreen({required this.buyerData});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(vendor.businessName ?? 'Vendor Detail'),
+        title: Text(buyerData['fullName'] ?? 'Buyer Detail'),
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(16.0),
@@ -21,7 +21,7 @@ class VendorDetailScreen extends StatelessWidget {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(8.0),
                 child: Image.network(
-                  vendor.storeImage ?? '',
+                  buyerData['profileImage'] ?? '',
                   width: 150,
                   height: 150,
                   fit: BoxFit.cover,
@@ -40,13 +40,10 @@ class VendorDetailScreen extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      _buildDetailItem('Business Name', vendor.businessName ?? 'Not available'),
-                      _buildDetailItem('Country', vendor.countryValue ?? 'Not available'),
-                      _buildDetailItem('State', vendor.stateValue ?? 'Not available'),
-                      _buildDetailItem('City', vendor.cityValue ?? 'Not available'),
-                      _buildDetailItem('Specific Address', vendor.address ?? 'Not available'),
-                      _buildDetailItem('Email', vendor.emailAddress ?? 'Not available'),
-                      _buildDetailItem('Phone', vendor.phoneNumber ?? 'Not available'),
+                      _buildDetailItem('Full Name', buyerData['fullName'] ?? 'Not available'),
+                      _buildDetailItem('Email', buyerData['email'] ?? 'Not available'),
+                      _buildDetailItem('Address', buyerData['address'] ?? 'Not available'),
+                      _buildDetailItem('Phone Number', buyerData['phoneNumber'] ?? 'Not available'),
                     ],
                   ),
                 ),

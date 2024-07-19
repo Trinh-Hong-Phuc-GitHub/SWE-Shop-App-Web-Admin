@@ -1,17 +1,22 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-
 import 'package:flutter/material.dart';
 
+import '../details/buyer_detail_screen.dart';
+
 class BuyersListWidget extends StatefulWidget {
+  final String searchQuery;
+
+  BuyersListWidget({required this.searchQuery});
+
   @override
   _BuyersListWidgetState createState() => _BuyersListWidgetState();
 }
 
 class _BuyersListWidgetState extends State<BuyersListWidget> {
   final Stream<QuerySnapshot> _usersStream =
-      FirebaseFirestore.instance.collection('buyers').snapshots();
+  FirebaseFirestore.instance.collection('buyers').snapshots();
 
-  Widget vendorData(Widget widget, int? flex) {
+  Widget buyerData(Widget widget, int? flex) {
     return Expanded(
       flex: flex!,
       child: Padding(
@@ -42,59 +47,75 @@ class _BuyersListWidgetState extends State<BuyersListWidget> {
           return Center(child: LinearProgressIndicator());
         }
 
+        var filteredDocs = snapshot.data!.docs.where((doc) {
+          return (doc['fullName'].toString().toLowerCase().contains(widget.searchQuery.toLowerCase()) ||
+              doc['email'].toString().toLowerCase().contains(widget.searchQuery.toLowerCase()) ||
+              doc['address'].toString().toLowerCase().contains(widget.searchQuery.toLowerCase()) ||
+              doc['phoneNumber'].toString().toLowerCase().contains(widget.searchQuery.toLowerCase()));
+        }).toList();
+
         return ListView.builder(
           shrinkWrap: true,
-          itemCount: snapshot.data!.docs.length,
+          itemCount: filteredDocs.length,
           itemBuilder: ((context, index) {
-            final buyerData = snapshot.data!.docs[index];
+            final buyer = filteredDocs[index];
             return Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                vendorData(
-                    Container(
-                      height: 50,
+                buyerData(
+                  Container(
+                    height: 50,
+                    width: 50,
+                    child: Image.network(
+                      buyer['profileImage'],
                       width: 50,
-                      child: Image.network(
-                        buyerData['profileImage'],
-                        width: 50,
-                        height: 50,
-                      ),
+                      height: 50,
                     ),
-                    1),
-                vendorData(
-                    Text(
-                      buyerData['fullName'],
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                    3),
-                vendorData(
-                    Text(
-                      buyerData['email'],
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                    2),
-                // vendorData(
-                //     Text(
-                //       buyerData['placeName'],
-                //       style: TextStyle(fontWeight: FontWeight.bold),
-                //     ),
-                //     2),
-                vendorData(
-                    ElevatedButton(
-                        onPressed: () async {},
-                        child: Text(
-                          'Reject',
-                          style: TextStyle(
-                              color: Colors.red, fontWeight: FontWeight.bold),
-                        )),
-                    1),
-                vendorData(
+                  ),
+                  1,
+                ),
+                buyerData(
+                  Text(
+                    buyer['fullName'],
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  1,
+                ),
+                buyerData(
+                  Text(
+                    buyer['email'],
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  2,
+                ),
+                buyerData(
+                  Text(
+                    buyer['address'],
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  3,
+                ),
+                buyerData(
+                  Text(
+                    buyer['phoneNumber'],
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  1,
+                ),
+                buyerData(
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => BuyerDetailScreen(buyerData: buyer),
+                        ),
+                      );
+                    },
                     child: Text(
                       'View More',
                       style: TextStyle(
-                        color: Colors.white,
+                        color: Colors.blue,
                       ),
                     ),
                   ),

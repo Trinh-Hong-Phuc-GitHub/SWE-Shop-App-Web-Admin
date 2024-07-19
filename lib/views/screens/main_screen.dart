@@ -56,11 +56,11 @@ class _MainScreenState extends State<MainScreen> {
           _selectedItem = UploadBannerScreen();
         });
         break;
-      case WithdrawalScreen.routeName:
-        setState(() {
-          _selectedItem = WithdrawalScreen();
-        });
-        break;
+      // case WithdrawalScreen.routeName:
+      //   setState(() {
+      //     _selectedItem = WithdrawalScreen();
+      //   });
+      //   break;
     }
   }
 
@@ -96,11 +96,6 @@ class _MainScreenState extends State<MainScreen> {
             icon: CupertinoIcons.person,
           ),
           AdminMenuItem(
-            title: 'Withdrawal',
-            icon: CupertinoIcons.money_dollar,
-            route: WithdrawalScreen.routeName,
-          ),
-          AdminMenuItem(
             title: 'Products',
             icon: Icons.shop,
             route: ProductsScreen.routeName,
@@ -110,6 +105,11 @@ class _MainScreenState extends State<MainScreen> {
             icon: CupertinoIcons.shopping_cart,
             route: OrdersScreen.routeName,
           ),
+          // AdminMenuItem(
+          //   title: 'Withdrawal',
+          //   icon: CupertinoIcons.money_dollar,
+          //   route: WithdrawalScreen.routeName,
+          // ),
         ],
         selectedRoute: '',
         onSelected: (item) {
@@ -134,7 +134,7 @@ class _MainScreenState extends State<MainScreen> {
           color: const Color(0xff444444),
           child: const Center(
             child: Text(
-              'Footer',
+              'Admin',
               style: TextStyle(
                 color: Colors.white,
               ),

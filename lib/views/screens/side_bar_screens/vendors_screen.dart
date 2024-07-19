@@ -19,7 +19,7 @@ class _VendorsScreenState extends State<VendorsScreen> {
           border: Border.all(
             color: Colors.grey.shade700,
           ),
-          color: Colors.yellow.shade900,
+          color: Colors.pink.shade900,
         ),
         child: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -92,9 +92,10 @@ class _VendorsScreenState extends State<VendorsScreen> {
           Row(
             children: [
               _rowHeader('LOGO', 1),
-              _rowHeader('BUSINESS NAME', 3),
-              _rowHeader('CITY', 2),
-              _rowHeader('STATE', 2),
+              _rowHeader('BUSINESS NAME', 2),
+              _rowHeader('HOTLINE', 1),
+              _rowHeader('CITY', 1),
+              _rowHeader('STATE', 1),
               _rowHeader('ACTION', 1),
               _rowHeader('VIEWMORE', 1),
             ],

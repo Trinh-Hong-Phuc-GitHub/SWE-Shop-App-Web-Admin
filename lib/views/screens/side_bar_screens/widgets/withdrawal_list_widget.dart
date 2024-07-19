@@ -2,16 +2,16 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:flutter/material.dart';
 
-class WithdrawalList extends StatefulWidget {
+class WithdrawalListWidget extends StatefulWidget {
   @override
-  _WithdrawalListState createState() => _WithdrawalListState();
+  _WithdrawalListWidgetState createState() => _WithdrawalListWidgetState();
 }
 
-class _WithdrawalListState extends State<WithdrawalList> {
+class _WithdrawalListWidgetState extends State<WithdrawalListWidget> {
   final Stream<QuerySnapshot> _withdrewStream =
   FirebaseFirestore.instance.collection('withdrawal').snapshots();
 
-  Widget withdrewdata(Widget widget, int? flex) {
+  Widget withdrawl(Widget widget, int? flex) {
     return Expanded(
       flex: flex!,
       child: Padding(
@@ -51,23 +51,23 @@ class _WithdrawalListState extends State<WithdrawalList> {
               final _withdrewData = snapshot.data!.docs[index];
               return Row(
                 children: [
-                  withdrewdata(
+                  withdrawl(
                       Text(
                         _withdrewData['businessName'],
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      1),
-                  withdrewdata(
+                      2),
+                  withdrawl(
                       Text(
-                        '\$' + " " + _withdrewData['amount'].toString(),
+                        _withdrewData['accountName'],
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      3),
-                  withdrewdata(
+                      2),
+                  withdrawl(
                       Text(
                         _withdrewData['bankName'],
                         style: TextStyle(
@@ -75,7 +75,7 @@ class _WithdrawalListState extends State<WithdrawalList> {
                         ),
                       ),
                       2),
-                  withdrewdata(
+                  withdrawl(
                       Text(
                         _withdrewData['accountNumber'],
                         style: TextStyle(
@@ -83,22 +83,14 @@ class _WithdrawalListState extends State<WithdrawalList> {
                         ),
                       ),
                       2),
-                  // withdrewdata(
-                  //     Text(
-                  //       _withdrewData['Mobile'],
-                  //       style: TextStyle(
-                  //         fontWeight: FontWeight.bold,
-                  //       ),
-                  //     ),
-                  //     1),
-                  withdrewdata(
+                  withdrawl(
                       Text(
-                        _withdrewData['businessName'],
+                        '\$' + " " + _withdrewData['amount'].toString(),
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      1)
+                      1),
                 ],
               );
             }),

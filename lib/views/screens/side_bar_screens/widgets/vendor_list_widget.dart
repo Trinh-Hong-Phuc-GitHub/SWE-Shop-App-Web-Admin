@@ -14,7 +14,7 @@ class VendorsListWidget extends StatefulWidget {
 }
 
 class _VendorsListWidgetState extends State<VendorsListWidget> {
-  final Stream<QuerySnapshot> _usersStream =
+  final Stream<QuerySnapshot> _vendorStream =
   FirebaseFirestore.instance.collection('vendors').snapshots();
 
   Widget vendorData(Widget widget, int? flex) {
@@ -38,7 +38,7 @@ class _VendorsListWidgetState extends State<VendorsListWidget> {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
-      stream: _usersStream,
+      stream: _vendorStream,
       builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
         if (snapshot.hasError) {
           return Center(child: Text('Something went wrong'));
@@ -81,19 +81,25 @@ class _VendorsListWidgetState extends State<VendorsListWidget> {
                       vendor.businessName.toString(),
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
-                    3),
+                    2),
+                vendorData(
+                    Text(
+                      vendor.phoneNumber.toString(),
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    1),
                 vendorData(
                     Text(
                       vendor.cityValue.toString(),
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
-                    2),
+                    1),
                 vendorData(
                     Text(
                       vendor.stateValue.toString(),
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
-                    2),
+                    1),
                 vendorData(
                     vendor.approved == true
                         ? ElevatedButton(
@@ -124,7 +130,7 @@ class _VendorsListWidgetState extends State<VendorsListWidget> {
                         'Approved',
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
-                            color: Colors.yellow),
+                            color: Colors.blue),
                       ),
                     ),
                     1),
@@ -142,7 +148,7 @@ class _VendorsListWidgetState extends State<VendorsListWidget> {
                         child: Text(
                           'View More',
                           style: TextStyle(
-                            color: Colors.white,
+                            color: Colors.blue,
                           ),
                         )),
                     1),
