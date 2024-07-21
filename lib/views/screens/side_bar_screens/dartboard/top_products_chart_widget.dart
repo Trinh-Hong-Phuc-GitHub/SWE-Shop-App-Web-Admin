@@ -26,18 +26,13 @@ class TopProductsChartWidget extends StatelessWidget {
             return Center(child: Text('No data available'));
           }
 
-          // Tính toán số lượt mua của mỗi sản phẩm
+          // Tính toán tổng số lượng đã đặt của mỗi sản phẩm
           Map<String, int> productPurchaseCount = {};
-          Map<String, String> productNames = {};
           for (var doc in snapshot.data!.docs) {
-            if (doc['accepted'] == true &&
-                doc['orderStatus'] == "Delivered Successfully") {
-              String productId = doc['productId'];
-              String productName = doc['productName'];
-              productPurchaseCount[productId] =
-                  (productPurchaseCount[productId] ?? 0) + 1;
-              productNames[productId] = productName;
-            }
+            String productName = doc['productName'];
+            int quantity = doc['quantity'];
+            productPurchaseCount[productName] =
+                (productPurchaseCount[productName] ?? 0) + quantity;
           }
 
           // Lấy danh sách top 5 sản phẩm bán chạy nhất
@@ -77,10 +72,13 @@ class TopProductsChartWidget extends StatelessWidget {
                 child: BarChart(
                   BarChartData(
                     titlesData: FlTitlesData(
+                      topTitles: AxisTitles(
+                        sideTitles: SideTitles(showTitles: false),
+                      ),
                       bottomTitles: AxisTitles(
                         sideTitles: SideTitles(
                           showTitles: true,
-                          reservedSize: 40,
+                          reservedSize: 60, // Tăng kích thước để có thêm không gian
                           getTitlesWidget: (value, meta) {
                             int index = value.toInt();
                             if (index >= 0 && index < topProducts.length) {
@@ -88,9 +86,19 @@ class TopProductsChartWidget extends StatelessWidget {
                                 axisSide: meta.axisSide,
                                 child: Padding(
                                   padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                                  child: Text(
-                                    productNames[topProducts[index].key] ?? '',
-                                    style: TextStyle(fontSize: 14, color: Colors.black),
+                                  child: Column(
+                                    children: [
+                                      Flexible(
+                                        child: Text(
+                                          topProducts[index].key,
+                                          style: TextStyle(fontSize: 12, color: Colors.black),
+                                          textAlign: TextAlign.center,
+                                          softWrap: true,
+                                          maxLines: 2, // Đặt số dòng tối đa
+                                          overflow: TextOverflow.ellipsis, // Thêm dấu ba chấm nếu quá dài
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ),
                               );

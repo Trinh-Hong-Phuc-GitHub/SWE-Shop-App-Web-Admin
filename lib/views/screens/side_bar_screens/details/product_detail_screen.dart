@@ -76,6 +76,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                     children: [
                       _buildDetailItem('Product Name', widget.productData['productName'] ?? 'Not available'),
                       _buildDetailItem('Brand', widget.productData['brandName'] ?? 'Not available'),
+                      _buildDetailItem('Business Name', widget.productData['businessName'] ?? 'Not available'),
                       _buildDetailItem('Category', widget.productData['category'] ?? 'Not available'),
                       _buildDetailItem('Price', '\$${widget.productData['productPrice'].toString()}' ?? 'Not available'),
                       _buildDetailItem('Quantity', widget.productData['productQuantity'].toString() ?? 'Not available'),

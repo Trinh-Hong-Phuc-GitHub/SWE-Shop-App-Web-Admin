@@ -79,6 +79,7 @@ class _OrderDetailScreenState extends State<OrderDetailScreen> {
                       ),
                       _buildDetailItem('Order Id', widget.orderData['orderId']),
                       _buildDetailItem('Order Date', widget.orderData['orderDate'].toDate().toString()),
+                      _buildDetailItem('Order Status', widget.orderData['orderStatus']),
                       Text(
                         'Product Information',
                         style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.pink),
@@ -99,7 +100,7 @@ class _OrderDetailScreenState extends State<OrderDetailScreen> {
                       _buildDetailItem('Address', widget.orderData['address']),
                       SizedBox(height: 10),
                       Text(
-                        'Order Status',
+                        'Action',
                         style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.pink),
                       ),
                       SizedBox(height: 4),
