@@ -71,37 +71,37 @@ class _MainScreenState extends State<MainScreen> {
       sideBar: SideBar(
         items: [
           AdminMenuItem(
-            title: 'Dashboard',
+            title: 'Thống Kê',
             icon: Icons.dashboard,
             route: DashboardScreen.routeName,
           ),
           AdminMenuItem(
-            title: 'Upload Banner',
+            title: 'Thêm Banner',
             icon: CupertinoIcons.add,
             route: UploadBannerScreen.routeName,
           ),
           AdminMenuItem(
-            title: 'Categories',
+            title: 'Danh Mục',
             icon: Icons.category,
             route: CategoryScreen.routeName,
           ),
           AdminMenuItem(
-            title: 'Vendors',
+            title: 'Cửa Hàng',
             icon: CupertinoIcons.person_3,
             route: VendorsScreen.routeName,
           ),
           AdminMenuItem(
-            title: 'Buyers',
+            title: 'Khách Hàng',
             route: BuyersScreen.id,
             icon: CupertinoIcons.person,
           ),
           AdminMenuItem(
-            title: 'Products',
+            title: 'Sản Phẩm',
             icon: Icons.shop,
             route: ProductsScreen.routeName,
           ),
           AdminMenuItem(
-            title: 'Orders',
+            title: 'Đơn Hàng',
             icon: CupertinoIcons.shopping_cart,
             route: OrdersScreen.routeName,
           ),
@@ -121,7 +121,7 @@ class _MainScreenState extends State<MainScreen> {
           color: const Color(0xff444444),
           child: const Center(
             child: Text(
-              'SWE Store Panel',
+              'SWE Online Shop',
               style: TextStyle(
                 color: Colors.white,
               ),

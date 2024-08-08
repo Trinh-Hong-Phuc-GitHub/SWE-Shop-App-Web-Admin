@@ -47,7 +47,7 @@ class _VendorsScreenState extends State<VendorsScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 const Text(
-                  'Manage Vendors',
+                  'Cửa Hàng',
                   style: TextStyle(
                     fontWeight: FontWeight.w700,
                     fontSize: 36,
@@ -65,7 +65,7 @@ class _VendorsScreenState extends State<VendorsScreen> {
                             });
                           },
                           decoration: InputDecoration(
-                            hintText: 'Search Vendors',
+                            hintText: 'Tìm Kiếm',
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(8),
                               borderSide: BorderSide.none,
@@ -92,12 +92,12 @@ class _VendorsScreenState extends State<VendorsScreen> {
           Row(
             children: [
               _rowHeader('LOGO', 1),
-              _rowHeader('BUSINESS NAME', 2),
+              _rowHeader('TÊN CỬA HÀNG', 2),
               _rowHeader('HOTLINE', 1),
-              _rowHeader('CITY', 1),
-              _rowHeader('STATE', 1),
-              _rowHeader('ACTION', 1),
-              _rowHeader('VIEWMORE', 1),
+              _rowHeader('KHU VỰC', 1),
+              _rowHeader('HÀNH ĐỘNG', 1),
+              _rowHeader('THÀNH PHỐ', 1),
+              _rowHeader('XEM THÊM', 1),
             ],
           ),
           VendorsListWidget(searchQuery: searchQuery),

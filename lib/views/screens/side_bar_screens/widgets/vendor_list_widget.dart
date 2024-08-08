@@ -90,13 +90,13 @@ class _VendorsListWidgetState extends State<VendorsListWidget> {
                     1),
                 vendorData(
                     Text(
-                      vendor.cityValue.toString(),
+                      vendor.stateValue.toString(),
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                     1),
                 vendorData(
                     Text(
-                      vendor.stateValue.toString(),
+                      vendor.cityValue.toString(),
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                     1),
@@ -112,7 +112,7 @@ class _VendorsListWidgetState extends State<VendorsListWidget> {
                           });
                         },
                         child: Text(
-                          'Reject',
+                          'Từ Chối',
                           style: TextStyle(
                               color: Colors.red,
                               fontWeight: FontWeight.bold),
@@ -127,7 +127,7 @@ class _VendorsListWidgetState extends State<VendorsListWidget> {
                         });
                       },
                       child: Text(
-                        'Approved',
+                        'Cấp Quyền',
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
                             color: Colors.blue),
@@ -146,7 +146,7 @@ class _VendorsListWidgetState extends State<VendorsListWidget> {
                           );
                         },
                         child: Text(
-                          'View More',
+                          'Xem Thêm',
                           style: TextStyle(
                             color: Colors.blue,
                           ),

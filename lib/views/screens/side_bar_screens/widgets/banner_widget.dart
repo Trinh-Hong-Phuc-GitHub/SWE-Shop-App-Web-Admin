@@ -39,14 +39,14 @@ class BannerWidget extends StatelessWidget {
                   context: context,
                   builder: (BuildContext context) {
                     return AlertDialog(
-                      title: Text('Confirm deletion'),
-                      content: Text('Do you want to delete this banner?'),
+                      title: Text('Xác nhận xóa'),
+                      content: Text('Bạn muốn xóa banner này?'),
                       actions: <Widget>[
                         TextButton(
                           onPressed: () {
                             Navigator.of(context).pop(); // Đóng hộp thoại
                           },
-                          child: Text('Cancel'),
+                          child: Text('Hủy'),
                         ),
                         TextButton(
                           onPressed: () {
@@ -56,7 +56,7 @@ class BannerWidget extends StatelessWidget {
                                 .delete();
                             Navigator.of(context).pop(); // Đóng hộp thoại
                           },
-                          child: Text('Delete'),
+                          child: Text('Xóa'),
                         ),
                       ],
                     );

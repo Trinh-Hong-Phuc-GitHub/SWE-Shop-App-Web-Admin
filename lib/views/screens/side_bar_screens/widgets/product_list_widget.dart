@@ -89,11 +89,11 @@ class _ProductListWidgetState extends State<ProductListWidget> {
                       product['productName'],
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
-                    3,
+                    2,
                   ),
                   vendorData(
                     Text(
-                      "\$" + ' ' + product['productPrice'].toString(),
+                      product['productPrice'].toString() + ' đ',
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                     1,
@@ -117,7 +117,7 @@ class _ProductListWidgetState extends State<ProductListWidget> {
                         });
                       },
                       child: Text(
-                        'Reject',
+                        'RIÊNG TƯ',
                         style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
                       ),
                     )
@@ -131,7 +131,7 @@ class _ProductListWidgetState extends State<ProductListWidget> {
                         });
                       },
                       child: Text(
-                        'Approved',
+                        'CÔNG KHAI',
                         style: TextStyle(fontWeight: FontWeight.bold, color: Colors.blue),
                       ),
                     ),
@@ -144,17 +144,17 @@ class _ProductListWidgetState extends State<ProductListWidget> {
                           context: context,
                           builder: (BuildContext context) {
                             return AlertDialog(
-                              title: Text('Confirm Delete'),
-                              content: Text('Are you sure you want to delete this product?'),
+                              title: Text('Xác Nhận Xóa'),
+                              content: Text('Bạn có chắc muốn xóa sản phẩm này?'),
                               actions: [
                                 TextButton(
-                                  child: Text('Cancel'),
+                                  child: Text('Trở về'),
                                   onPressed: () {
                                     Navigator.of(context).pop();
                                   },
                                 ),
                                 TextButton(
-                                  child: Text('Delete'),
+                                  child: Text('Xóa'),
                                   onPressed: () async {
                                     await _deleteProduct(product['productId']);
                                     Navigator.of(context).pop();
@@ -166,7 +166,7 @@ class _ProductListWidgetState extends State<ProductListWidget> {
                         );
                       },
                       child: Text(
-                        'DELETE',
+                        'XÓA',
                         style: TextStyle(color: Colors.pink.shade900, fontWeight: FontWeight.bold),
                       ),
                     ),
@@ -183,7 +183,7 @@ class _ProductListWidgetState extends State<ProductListWidget> {
                         );
                       },
                       child: Text(
-                        'View More',
+                        'Xem Thêm',
                         style: TextStyle(color: Colors.pink.shade900, fontWeight: FontWeight.bold),
                       ),
                     ),

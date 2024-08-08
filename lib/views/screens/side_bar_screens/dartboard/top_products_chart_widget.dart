@@ -29,10 +29,13 @@ class TopProductsChartWidget extends StatelessWidget {
           // Tính toán tổng số lượng đã đặt của mỗi sản phẩm
           Map<String, int> productPurchaseCount = {};
           for (var doc in snapshot.data!.docs) {
-            String productName = doc['productName'];
-            int quantity = doc['quantity'];
-            productPurchaseCount[productName] =
-                (productPurchaseCount[productName] ?? 0) + quantity;
+            List products = doc['products'];
+            for (var product in products) {
+              String productName = product['productName'];
+              int quantity = product['quantity'];
+              productPurchaseCount[productName] =
+                  (productPurchaseCount[productName] ?? 0) + quantity;
+            }
           }
 
           // Lấy danh sách top 5 sản phẩm bán chạy nhất
@@ -59,7 +62,7 @@ class TopProductsChartWidget extends StatelessWidget {
           return Column(
             children: [
               Text(
-                'Top 5 Best Selling Products',
+                'Top Sản Phẩm Bán Chạy',
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,

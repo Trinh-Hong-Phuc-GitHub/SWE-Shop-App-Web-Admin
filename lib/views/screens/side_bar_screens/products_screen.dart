@@ -57,7 +57,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
           0,
           DropdownMenuItem(
             value: '',
-            child: Text('All Categories'),
+            child: Text('Danh Mục'),
           ),
         );
 
@@ -69,7 +69,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
               selectedCategory = newValue!;
             });
           },
-          hint: Text('Select Category'),
+          hint: Text('Phân Loại'),
         );
       },
     );
@@ -87,7 +87,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 const Text(
-                  'Products',
+                  'Sản Phẩm',
                   style: TextStyle(
                     fontWeight: FontWeight.w700,
                     fontSize: 36,
@@ -105,7 +105,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
                             });
                           },
                           decoration: InputDecoration(
-                            hintText: 'Search Products',
+                            hintText: 'Tìm Kiếm',
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(8),
                               borderSide: BorderSide.none,
@@ -142,13 +142,13 @@ class _ProductsScreenState extends State<ProductsScreen> {
           ),
           Row(
             children: [
-              _rowHeader('IMAGE', 1),
-              _rowHeader('NAME', 3),
-              _rowHeader('PRICE', 1),
-              _rowHeader('CATEGORY', 1),
-              _rowHeader('ACTION', 1),
-              _rowHeader('DELETE', 1),
-              _rowHeader('VIEW MORE', 1),
+              _rowHeader('ẢNH', 1),
+              _rowHeader('TÊN SẢN PHẨM', 2),
+              _rowHeader('ĐƠN GIÁ', 1),
+              _rowHeader('DANH MỤC', 1),
+              _rowHeader('TRẠNG THÁI', 1),
+              _rowHeader('XÓA', 1),
+              _rowHeader('XEM THÊM', 1),
             ],
           ),
           ProductListWidget(

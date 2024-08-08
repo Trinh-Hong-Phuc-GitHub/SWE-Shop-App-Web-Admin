@@ -113,7 +113,7 @@ class _BuyersListWidgetState extends State<BuyersListWidget> {
                       );
                     },
                     child: Text(
-                      'View More',
+                      'Xem Thêm',
                       style: TextStyle(
                         color: Colors.blue,
                       ),

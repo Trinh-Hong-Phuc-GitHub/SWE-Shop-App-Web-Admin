@@ -10,7 +10,7 @@ class VendorDetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(vendor.businessName ?? 'Vendor Detail'),
+        title: Text(vendor.businessName ?? 'Chi Tiết Cửa Hàng'),
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(16.0),
@@ -40,13 +40,13 @@ class VendorDetailScreen extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      _buildDetailItem('Business Name', vendor.businessName ?? 'Not available'),
-                      _buildDetailItem('Country', vendor.countryValue ?? 'Not available'),
-                      _buildDetailItem('State', vendor.stateValue ?? 'Not available'),
-                      _buildDetailItem('City', vendor.cityValue ?? 'Not available'),
-                      _buildDetailItem('Specific Address', vendor.address ?? 'Not available'),
+                      _buildDetailItem('Tên Cửa Hàng', vendor.businessName ?? 'Not available'),
+                      _buildDetailItem('Quốc Gia', vendor.countryValue ?? 'Not available'),
+                      _buildDetailItem('Thành Phố', vendor.stateValue ?? 'Not available'),
+                      _buildDetailItem('Khu Vực', vendor.cityValue ?? 'Not available'),
+                      _buildDetailItem('Địa Chỉ', vendor.address ?? 'Not available'),
                       _buildDetailItem('Email', vendor.emailAddress ?? 'Not available'),
-                      _buildDetailItem('Phone', vendor.phoneNumber ?? 'Not available'),
+                      _buildDetailItem('Số Điện Thoại', vendor.phoneNumber ?? 'Not available'),
                     ],
                   ),
                 ),

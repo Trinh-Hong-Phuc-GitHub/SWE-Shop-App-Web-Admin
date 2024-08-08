@@ -12,7 +12,7 @@ class DashboardStatsWidget extends StatelessWidget {
           Expanded(
             child: _buildStatItem(
               icon: Icons.store,
-              label: 'Total Vendors',
+              label: 'Tài khoản cửa hàng',
               stream: FirebaseFirestore.instance.collection('vendors').snapshots(),
               dataBuilder: (QuerySnapshot snapshot) =>
                   snapshot.docs.length.toString(),
@@ -23,7 +23,7 @@ class DashboardStatsWidget extends StatelessWidget {
           Expanded(
             child: _buildStatItem(
               icon: Icons.person,
-              label: 'Total Account Buyers',
+              label: 'Tài khoản người mua',
               stream: FirebaseFirestore.instance.collection('buyers').snapshots(),
               dataBuilder: (QuerySnapshot snapshot) =>
                   snapshot.docs.length.toString(),

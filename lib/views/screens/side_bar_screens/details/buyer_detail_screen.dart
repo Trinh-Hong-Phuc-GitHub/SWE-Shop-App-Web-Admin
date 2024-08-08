@@ -10,7 +10,7 @@ class BuyerDetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(buyerData['fullName'] ?? 'Buyer Detail'),
+        title: Text(buyerData['fullName'] ?? 'Thông Tin Khách Hàng'),
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(16.0),
@@ -40,10 +40,10 @@ class BuyerDetailScreen extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      _buildDetailItem('Full Name', buyerData['fullName'] ?? 'Not available'),
+                      _buildDetailItem('Họ Và Tên', buyerData['fullName'] ?? 'Not available'),
                       _buildDetailItem('Email', buyerData['email'] ?? 'Not available'),
-                      _buildDetailItem('Address', buyerData['address'] ?? 'Not available'),
-                      _buildDetailItem('Phone Number', buyerData['phoneNumber'] ?? 'Not available'),
+                      _buildDetailItem('Địa Chỉ', buyerData['address'] ?? 'Not available'),
+                      _buildDetailItem('Số Điện Thoại', buyerData['phoneNumber'] ?? 'Not available'),
                     ],
                   ),
                 ),

@@ -21,7 +21,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.productData['productName'] ?? 'Product Detail'),
+        title: Text(widget.productData['productName'] ?? 'Chi Tiết Sản Phẩm'),
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(16.0),
@@ -56,7 +56,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                   ),
                   SizedBox(height: 10),
                   Text(
-                    'Image ${_currentImageIndex + 1} of ${productImages.length}',
+                    'Ảnh ${_currentImageIndex + 1} / ${productImages.length}',
                     style: TextStyle(fontSize: 16, color: Colors.grey),
                   ),
                 ],
@@ -74,12 +74,12 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      _buildDetailItem('Product Name', widget.productData['productName'] ?? 'Not available'),
-                      _buildDetailItem('Brand', widget.productData['brandName'] ?? 'Not available'),
-                      _buildDetailItem('Business Name', widget.productData['businessName'] ?? 'Not available'),
-                      _buildDetailItem('Category', widget.productData['category'] ?? 'Not available'),
-                      _buildDetailItem('Price', '\$${widget.productData['productPrice'].toString()}' ?? 'Not available'),
-                      _buildDetailItem('Quantity', widget.productData['productQuantity'].toString() ?? 'Not available'),
+                      _buildDetailItem('Tên Sản Phẩm', widget.productData['productName'] ?? 'Not available'),
+                      _buildDetailItem('Thương Hiệu', widget.productData['brandName'] ?? 'Not available'),
+                      _buildDetailItem('Cửa Hàng', widget.productData['businessName'] ?? 'Not available'),
+                      _buildDetailItem('Danh Mục', widget.productData['category'] ?? 'Not available'),
+                      _buildDetailItem('Đơn Giá', '${widget.productData['productPrice'].toString()} đ' ?? 'Not available'),
+                      _buildDetailItem('Số Lượng', widget.productData['productQuantity'].toString() ?? 'Not available'),
                       SizedBox(height: 10),
                       Text(
                         'Description',
@@ -89,20 +89,20 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                       Container(
                         constraints: BoxConstraints(maxWidth: 800),
                         child: Text(
-                          widget.productData['description'] ?? 'Not available',
+                          widget.productData['description'] ?? 'Chưa có dữ liệu',
                           style: TextStyle(fontSize: 16),
                         ),
                       ),
                       SizedBox(height: 10),
-                      _buildDetailItem('Phone Number', widget.productData['phoneNumber'] ?? 'Not available'),
-                      _buildDetailItem('City', widget.productData['cityValue'] ?? 'Not available'),
-                      _buildDetailItem('State', widget.productData['stateValue'] ?? 'Not available'),
-                      _buildDetailItem('Country', widget.productData['countryValue'] ?? 'Not available'),
-                      _buildDetailItem('Rating', widget.productData['rating'].toString() ?? 'Not available'),
-                      _buildDetailItem('Total Reviews', widget.productData['totalReviews'].toString() ?? 'Not available'),
+                      _buildDetailItem('Số Điện Thoại', widget.productData['phoneNumber'] ?? 'Not available'),
+                      _buildDetailItem('Quốc Gia', widget.productData['countryValue'] ?? 'Not available'),
+                      _buildDetailItem('Thành Phố', widget.productData['stateValue'] ?? 'Not available'),
+                      _buildDetailItem('Khu Vực', widget.productData['cityValue'] ?? 'Not available'),
+                      _buildDetailItem('Đánh Giá', widget.productData['rating'].toString() ?? 'Not available'),
+                      _buildDetailItem('Số Nhận Xét', widget.productData['totalReviews'].toString() ?? 'Not available'),
                       SizedBox(height: 10),
                       Text(
-                        'Sizes Available',
+                        'Bảng Size',
                         style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.pink),
                       ),
                       Wrap(

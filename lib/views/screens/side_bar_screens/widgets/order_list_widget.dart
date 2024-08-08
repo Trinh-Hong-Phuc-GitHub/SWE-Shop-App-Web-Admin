@@ -87,42 +87,39 @@ class _OrderListWidgetState extends State<OrderListWidget> {
                 children: [
                   vendorData(
                     Text(
+                      order['fullName'],
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    2,
+                  ),
+                  vendorData(
+                    Text(
+                      order['email'].toString(),
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    2,
+                  ),
+                  vendorData(
+                    Text(
                       order['orderDate'].toDate().toString(),
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                     2,
                   ),
                   vendorData(
-                    Container(
-                      height: 50,
-                      width: 50,
-                      child: Image.network(
-                        order['productImage'][0],
-                        width: 50,
-                        height: 50,
-                      ),
-                    ),
-                    1,
-                  ),
-                  vendorData(
                     Text(
-                      order['productName'],
+                      order['orderStatus'],
                       style: TextStyle(fontWeight: FontWeight.bold),
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                     ),
-                    3,
-                  ),
-                  vendorData(
-                    Text(
-                      order['quantity'].toString(),
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
                     1,
                   ),
                   vendorData(
                     Text(
-                      "\$" + ' ' + order['price'].toString(),
+                      order['totalPrice'].toString() + ' đ',
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                     1,
@@ -140,7 +137,7 @@ class _OrderListWidgetState extends State<OrderListWidget> {
                         );
                       },
                       child: Text(
-                        'View More',
+                        'Xem Thêm',
                         style: TextStyle(
                           color: Colors.blue,
                         ),

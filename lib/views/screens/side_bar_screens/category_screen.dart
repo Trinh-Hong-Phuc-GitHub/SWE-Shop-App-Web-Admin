@@ -62,8 +62,8 @@ class _CategoryScreenState extends State<CategoryScreen> {
           context: context,
           builder: (context) {
             return AlertDialog(
-              title: Text('Error'),
-              content: Text('Category name already exists. Please choose a different name.'),
+              title: Text('Lỗi'),
+              content: Text('Danh mục đã tồn tại. Vui lòng chọn tên khác.'),
               actions: [
                 ElevatedButton(
                   onPressed: () {
@@ -104,7 +104,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
               alignment: Alignment.topLeft,
               padding: const EdgeInsets.all(10),
               child: const Text(
-                'Category',
+                'Danh Mục',
                 style: TextStyle(
                   fontWeight: FontWeight.w700,
                   fontSize: 36,
@@ -136,7 +136,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
                           fit: BoxFit.cover,
                         )
                             : Center(
-                          child: Text('Category'),
+                          child: Text('Danh Mục'),
                         ),
                       ),
                       SizedBox(
@@ -150,7 +150,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
                           _pickImage();
                         },
                         child: Text(
-                          'Upload Image',
+                          'Thêm Ảnh',
                           style: TextStyle(
                             color: Colors.white,
                           ),
@@ -168,14 +168,14 @@ class _CategoryScreenState extends State<CategoryScreen> {
                       },
                       validator: (value) {
                         if (value!.isEmpty) {
-                          return 'Please Category Name Must Not Be Empty';
+                          return 'Tên danh mục không được để trống';
                         } else {
                           return null;
                         }
                       },
                       decoration: InputDecoration(
-                        labelText: 'Enter Category Name',
-                        hintText: 'Enter Category Name',
+                        labelText: 'Nhập tên danh mục',
+                        hintText: 'Nhập tên danh mục',
                       ),
                     ),
                   ),
@@ -191,7 +191,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
                     uploadCategory();
                   },
                   child: Text(
-                    'Save',
+                    'Lưu',
                     style: TextStyle(
                       color: Colors.white,
                     ),
@@ -210,7 +210,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
               child: Container(
                 alignment: Alignment.topLeft,
                 child: Text(
-                  'Categories',
+                  'Danh Mục',
                   style: TextStyle(
                     fontSize: 36,
                     fontWeight: FontWeight.bold,

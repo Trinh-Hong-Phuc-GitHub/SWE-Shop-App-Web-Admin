@@ -25,6 +25,7 @@ class _BuyersScreenState extends State<BuyersScreen> {
               text,
               style: TextStyle(
                 color: Colors.white,
+                fontWeight: FontWeight.bold,
               ),
             ),
           ),
@@ -44,7 +45,7 @@ class _BuyersScreenState extends State<BuyersScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   const Text(
-                    'Manage Buyers',
+                    'Khách Hàng',
                     style: TextStyle(
                       fontWeight: FontWeight.w700,
                       fontSize: 36,
@@ -62,7 +63,7 @@ class _BuyersScreenState extends State<BuyersScreen> {
                               });
                             },
                             decoration: InputDecoration(
-                              hintText: 'Search Buyers',
+                              hintText: 'Tìm Kiếm',
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(8),
                                 borderSide: BorderSide.none,
@@ -88,12 +89,12 @@ class _BuyersScreenState extends State<BuyersScreen> {
             ),
             Row(
               children: [
-                _rowHeader(1, 'PROFILE IMAGE'),
-                _rowHeader(1, 'FULL NAME'),
+                _rowHeader(1, 'AVATAR'),
+                _rowHeader(1, 'HỌ TÊN'),
                 _rowHeader(2, 'EMAIL'),
-                _rowHeader(3, 'ADDRESS'),
-                _rowHeader(1, 'PHONE'),
-                _rowHeader(1, 'VIEW MORE'),
+                _rowHeader(3, 'ĐỊA CHỈ'),
+                _rowHeader(1, 'SỐ ĐIỆN THOẠI'),
+                _rowHeader(1, 'XEM THÊM'),
               ],
             ),
             BuyersListWidget(searchQuery: searchQuery),

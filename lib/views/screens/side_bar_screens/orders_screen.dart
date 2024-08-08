@@ -56,7 +56,7 @@ class _OrdersScreenState extends State<OrdersScreen> {
                   alignment: Alignment.topLeft,
                   padding: const EdgeInsets.all(10),
                   child: const Text(
-                    'Orders',
+                    'Đơn Hàng',
                     style: TextStyle(
                       fontWeight: FontWeight.w700,
                       fontSize: 36,
@@ -75,11 +75,11 @@ class _OrdersScreenState extends State<OrdersScreen> {
                       'latest_first',
                       'oldest_first',
                     ].map<DropdownMenuItem<String>>((String value) {
-                      String text = 'Default';
+                      String text = 'Mặc Định';
                       if (value == 'latest_first') {
-                        text = 'Latest First';
+                        text = 'Sớm Nhất';
                       } else if (value == 'oldest_first') {
-                        text = 'Oldest First';
+                        text = 'Muộn Nhất';
                       }
                       return DropdownMenuItem<String>(
                         value: value,
@@ -95,12 +95,12 @@ class _OrdersScreenState extends State<OrdersScreen> {
             ),
             Row(
               children: [
-                _rowHeader('ORDER DATE', 2),
-                _rowHeader('PRODUCT IMAGE', 1),
-                _rowHeader('PRODUCT NAME', 3),
-                _rowHeader('QUANTITY', 1),
-                _rowHeader('PRICE', 1),
-                _rowHeader('VIEW MORE', 1),
+                _rowHeader('KHÁCH HÀNG', 2),
+                _rowHeader('EMAIL', 2),
+                _rowHeader('THỜI GIAN ĐẶT', 2),
+                _rowHeader('TRẠNG THÁI', 1),
+                _rowHeader('THÀNH TIỀN', 1),
+                _rowHeader('XEM THÊM', 1),
               ],
             ),
             OrderListWidget(sortBy: _sortBy),

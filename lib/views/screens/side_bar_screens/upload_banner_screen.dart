@@ -111,7 +111,7 @@ class _UploadBannerScreenState extends State<UploadBannerScreen> {
                         pickImage();
                       },
                       child: Text(
-                        'Upload Image',
+                        'Thêm Ảnh',
                         style: TextStyle(
                           color: Colors.white,
                         ),
@@ -131,7 +131,7 @@ class _UploadBannerScreenState extends State<UploadBannerScreen> {
                   uploadToFireStore();
                 },
                 child: Text(
-                  'Save',
+                  'Lưu',
                   style: TextStyle(
                     color: Colors.white,
                   ),

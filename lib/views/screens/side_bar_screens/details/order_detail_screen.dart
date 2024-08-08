@@ -16,52 +16,17 @@ class _OrderDetailScreenState extends State<OrderDetailScreen> {
 
   @override
   Widget build(BuildContext context) {
-    List<String> productImages = List<String>.from(widget.orderData['productImage']);
+    List<Map<String, dynamic>> products = List<Map<String, dynamic>>.from(widget.orderData['products']);
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Order Detail'),
+        title: Text('Chi Tiết Đơn Hàng'),
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Center(
-              child: Column(
-                children: [
-                  CarouselSlider(
-                    options: CarouselOptions(
-                      height: 300.0,
-                      onPageChanged: (index, reason) {
-                        setState(() {
-                          _currentImageIndex = index;
-                        });
-                      },
-                    ),
-                    items: productImages.map((imageUrl) {
-                      return Builder(
-                        builder: (BuildContext context) {
-                          return AspectRatio(
-                            aspectRatio: 1.0,
-                            child: Image.network(
-                              imageUrl,
-                              fit: BoxFit.cover,
-                            ),
-                          );
-                        },
-                      );
-                    }).toList(),
-                  ),
-                  SizedBox(height: 10),
-                  Text(
-                    'Image ${_currentImageIndex + 1} of ${productImages.length}',
-                    style: TextStyle(fontSize: 16, color: Colors.grey),
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(height: 20),
             Center(
               child: Card(
                 elevation: 4,
@@ -74,33 +39,70 @@ class _OrderDetailScreenState extends State<OrderDetailScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Order Detail',
+                        'Chi Tiết Đơn Hàng',
                         style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.pink),
                       ),
-                      _buildDetailItem('Order Id', widget.orderData['orderId']),
-                      _buildDetailItem('Order Date', widget.orderData['orderDate'].toDate().toString()),
-                      _buildDetailItem('Order Status', widget.orderData['orderStatus']),
-                      Text(
-                        'Product Information',
-                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.pink),
-                      ),
-                      _buildDetailItem('Product Name', widget.orderData['productName']),
-                      _buildDetailItem('Quantity', widget.orderData['quantity'].toString()),
-                      _buildDetailItem('Price', '\$${widget.orderData['price'].toString()}'),
-                      _buildDetailItem('Size', widget.orderData['productSize']),
+                      _buildDetailItem('Id', widget.orderData['orderId']),
+                      _buildDetailItem('Thời Gian Đặt', widget.orderData['orderDate'].toDate().toString()),
+                      _buildDetailItem('Trạng Thái', widget.orderData['orderStatus']),
                       SizedBox(height: 10),
                       Text(
-                        'Buyer Information',
+                        'Thông Tin Sản Phẩm',
                         style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.pink),
                       ),
                       SizedBox(height: 4),
-                      _buildDetailItem('Full Name', widget.orderData['fullName']),
+                      ...products.map((product) => Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          CarouselSlider(
+                            options: CarouselOptions(
+                              height: 300.0,
+                              onPageChanged: (index, reason) {
+                                setState(() {
+                                  _currentImageIndex = index;
+                                });
+                              },
+                            ),
+                            items: List<String>.from(product['productImage']).map((imageUrl) {
+                              return Builder(
+                                builder: (BuildContext context) {
+                                  return AspectRatio(
+                                    aspectRatio: 1.0,
+                                    child: Image.network(
+                                      imageUrl,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  );
+                                },
+                              );
+                            }).toList(),
+                          ),
+                          SizedBox(height: 10),
+                          Center(
+                            child: Text(
+                              'Ảnh ${_currentImageIndex + 1} / ${List<String>.from(product['productImage']).length}',
+                              style: TextStyle(fontSize: 16, color: Colors.grey),
+                            ),
+                          ),
+                          _buildDetailItem('Tên Sản Phẩm', product['productName']),
+                          _buildDetailItem('Số Lượng', product['quantity'].toString()),
+                          _buildDetailItem('Đơn Giá', '${product['price'].toString()} đ'),
+                          _buildDetailItem('Size', product['productSize']),
+                          SizedBox(height: 10),
+                        ],
+                      )),
+                      Text(
+                        'Thông Tin Khách Hàng',
+                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.pink),
+                      ),
+                      SizedBox(height: 4),
+                      _buildDetailItem('Họ tên', widget.orderData['fullName']),
                       _buildDetailItem('Email', widget.orderData['email']),
-                      _buildDetailItem('Phone Number', widget.orderData['phoneNumber']),
-                      _buildDetailItem('Address', widget.orderData['address']),
+                      _buildDetailItem('Số điện thoại', widget.orderData['phoneNumber']),
+                      _buildDetailItem('Địa chỉ', widget.orderData['address']),
                       SizedBox(height: 10),
                       Text(
-                        'Action',
+                        'Trạng Thái',
                         style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.pink),
                       ),
                       SizedBox(height: 4),
@@ -145,7 +147,7 @@ class _OrderDetailScreenState extends State<OrderDetailScreen> {
   Widget _buildOrderStatus(bool? accepted) {
     if (accepted == true) {
       return Text(
-        'Accepted',
+        'Đã Xác Nhận',
         style: TextStyle(
           fontSize: 18,
           color: Colors.blue,
@@ -154,7 +156,7 @@ class _OrderDetailScreenState extends State<OrderDetailScreen> {
       );
     } else {
       return Text(
-        'Rejected',
+        'Chưa Xác Nhận',
         style: TextStyle(
           fontSize: 18,
           color: Colors.red,

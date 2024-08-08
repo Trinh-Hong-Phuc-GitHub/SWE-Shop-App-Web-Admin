@@ -8,7 +8,7 @@ class RevenuePieChartWidget extends StatelessWidget {
     return StreamBuilder<QuerySnapshot>(
       stream: FirebaseFirestore.instance.collection('orders')
           .where('accepted', isEqualTo: true)
-          .where('orderStatus', isEqualTo: 'Delivered Successfully')
+          .where('orderStatus', isEqualTo: 'Giao Thành Công')
           .snapshots(),
       builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> orderSnapshot) {
         if (orderSnapshot.hasError) {
@@ -39,7 +39,7 @@ class RevenuePieChartWidget extends StatelessWidget {
 
             orderSnapshot.data!.docs.forEach((doc) {
               String vendorId = doc['vendorId'];
-              double price = (doc['price'] ?? 0).toDouble();
+              double price = (doc['totalPrice'] ?? 0).toDouble();
               String vendorName = vendorIdToNameMap[vendorId] ?? 'Unknown Vendor';
 
               if (vendorRevenueMap.containsKey(vendorName)) {
@@ -66,7 +66,7 @@ class RevenuePieChartWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
-                    'Revenue Distribution',
+                    'Phân Phối Doanh Thu',
                     style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.pink.shade900,),
                   ),
                   SizedBox(height: 16),
@@ -116,7 +116,7 @@ class RevenuePieChartWidget extends StatelessWidget {
                                 ),
                                 title: Text(entry.key),
                                 trailing: Text(
-                                  '\$${entry.value.toStringAsFixed(2)}',
+                                  '${entry.value.toStringAsFixed(0)}' + ' đ',
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     color: Colors.pink.shade900,

@@ -17,14 +17,14 @@ class CategoryWidget extends StatelessWidget {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Text('Can not delete'),
-            content: Text('Linked products need to be removed before deleting this product type.'),
+            title: Text('Không thể xóa'),
+            content: Text('Các sản phẩm được liên kết cần phải được xóa trước khi xóa loại sản phẩm này.'),
             actions: <Widget>[
               TextButton(
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
-                child: Text('Cancel'),
+                child: Text('Trở về'),
               ),
             ],
           );
@@ -72,20 +72,20 @@ class CategoryWidget extends StatelessWidget {
                   context: context,
                   builder: (BuildContext context) {
                     return AlertDialog(
-                      title: Text('Confirm deletion'),
-                      content: Text('Are you sure you want to delete this category?'),
+                      title: Text('Xác nhận xóa'),
+                      content: Text('Bạn có chắc muốn xóa danh mục này?'),
                       actions: <Widget>[
                         TextButton(
                           onPressed: () {
                             Navigator.of(context).pop(); // Đóng hộp thoại
                           },
-                          child: Text('Cancel'),
+                          child: Text('Hủy'),
                         ),
                         TextButton(
                           onPressed: () {
                             _deleteCategory(context, categoryData.id, categoryData['categoryName']);
                           },
-                          child: Text('Delete'),
+                          child: Text('Xóa'),
                         ),
                       ],
                     );
